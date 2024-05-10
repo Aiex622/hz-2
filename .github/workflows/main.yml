@@ -44,8 +44,8 @@ jobs:
       if: success()
       uses: appleboy/telegram-action@master
       with:
-        chat_id: ${{ secrets.CHAT_ID }}
-        bot_token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+        chat_id: -4217984127
+        bot_token: 6865885789:AAF4jp8hp4_uQ38tGPZcLYqtUoq2iMdD2OQ
         parse_mode: markdown
         message: |
           Все ок
