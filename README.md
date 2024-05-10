@@ -30,7 +30,8 @@ cd hz2
 Непрерывная интеграция:
 Настройка CI с использованием GitHub Actions выполняется автоматически при каждом пуше в репозиторий. Статус последней сборки доступен на странице проекта.
 
-![GitHub Actions](https://github.com/Aiex622/hz-2/workflows/workflow/badge.svg)
+![GitHub Actions](https://github.com/Aiex622/hz-2/workflows/Java%20CI%20for%20punck/badge.svg)
+
 
 Ссылка на Telegram-бота
 t.me/hz_or_not_hz_bot
