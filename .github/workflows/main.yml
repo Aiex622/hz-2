@@ -1,0 +1,56 @@
+name: Java CI for punck
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Source Code
+      uses: actions/checkout@v4
+
+    - name: Setup Node.js Environment
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20'
+
+    - name: Setup Java Development Kit
+      uses: actions/setup-java@v4
+      with:
+        java-version: '11'
+        distribution: 'temurin' 
+
+    - name: Cache Maven Dependencies
+      uses: actions/cache@v4
+      with:
+        path: ~/.m2
+        key: ${{ runner.os }}-maven-cache-${{ hashFiles('**/pom.xml') }}
+        restore-keys: |
+          ${{ runner.os }}-maven-cache-
+
+    - name: Maven Package Build
+      run: mvn -B package --file pom.xml
+
+    - name: Maven Test Execution
+      run: mvn test
+
+    - name: Telegram Notification on Success
+      if: success()
+      uses: appleboy/telegram-action@master
+      with:
+        chat_id: ${{ secrets.CHAT_ID }}
+        bot_token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+        parse_mode: markdown
+        message: |
+          Все ок
+          *Repository*: ${{ github.repository }}
+          *Triggered by*: ${{ github.actor }}
+          *Commit SHA*: ${{ github.sha }}
+          *Commit Message*: ${{ github.event.head_commit.message }}
+          [View Workflow](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})
