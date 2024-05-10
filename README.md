@@ -27,12 +27,10 @@ Java JDK 11 или выше
 Maven
 Клонирование репозитория
 git clone https://github.com/Aiex622/hz-2.git
-cd Software-Engenering-TZ2
+cd hz2
 Непрерывная интеграция
 Настройка CI с использованием GitHub Actions выполняется автоматически при каждом пуше в репозиторий. Статус последней сборки:
-
-Java CI with Maven
-
+![image](https://github.com/Aiex622/hz-2/assets/103375331/b21df7b2-146c-4b1c-81db-c72f90f69e5d)
 Ссылка на Telegram-бота
 t.me/hz_or_not_hz_bot
 
