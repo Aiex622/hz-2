@@ -18,7 +18,7 @@ jobs:
     - name: Setup Node.js Environment
       uses: actions/setup-node@v4
       with:
-        node-version: '20'
+        node-version: '14'
 
     - name: Setup Java Development Kit
       uses: actions/setup-java@v4
@@ -44,9 +44,8 @@ jobs:
       if: success()
       uses: appleboy/telegram-action@master
       with:
-        chat_id: -4217984127
-        bot_token: 6865885789:AAF4jp8hp4_uQ38tGPZcLYqtUoq2iMdD2OQ
-        parse_mode: markdown
+        token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+        to: ${{ secrets.TELEGRAM_CHAT_ID }}
         message: |
           Все ок
           *Repository*: ${{ github.repository }}
@@ -54,3 +53,4 @@ jobs:
           *Commit SHA*: ${{ github.sha }}
           *Commit Message*: ${{ github.event.head_commit.message }}
           [View Workflow](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})
+        parse_mode: markdown
