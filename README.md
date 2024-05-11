@@ -37,3 +37,4 @@ cd hz2
 t.me/hz_or_not_hz_bot
 
 Chat ID: -4217984127
+#тестовое изенение 
